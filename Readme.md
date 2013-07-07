@@ -1,4 +1,4 @@
-# DigitalOcean API
+# DigitalOcean API [![Build Status](https://secure.travis-ci.org/avz/node-digitalocean.png?branch=master)](http://travis-ci.org/avz/node-digitalocean)
 ```javascript
 var Api = require('digitalocean').Api;
 
