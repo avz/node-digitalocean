@@ -14,6 +14,11 @@ var tests = [
 		rel: '/hello/',
 		params: {a: 'b', b: 'c'},
 		resultUrl: 'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY&a=b&b=c'
+	},
+	{
+		rel: '/hello/',
+		params: {array: [1, 2, 3, 4]},
+		resultUrl: 'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY&array=1%2C2%2C3%2C4'
 	}
 ];
 
