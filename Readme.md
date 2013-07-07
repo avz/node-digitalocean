@@ -51,44 +51,119 @@ api.ssh_keys.new(
 ```
 
 ## API
-### Droplets
- - ``api.droplets.all([onSuccess])``
- - ``api.droplets.get(id, [onSuccess])``
- - ``api.droplets.new({new droplet fields}, [onSuccess])``
-
-### Droplet object
-Properties
-```javascript
-{
-	id: 100823,
-	backups_active: null,
-	image_id: 420,
-	name: "test222",
-	region_id: 1,
-	size_id: 33,
-	status: "active",
-}
-```
-
-Methods
-```javascript
-reboot([onSuccess]);
-power_cycle([onSuccess]);
-shutdown([onSuccess]);
-power_off([onSuccess]);
-power_on([onSuccess]);
-password_reset([onSuccess]);
-resize({size_id: 1}, [onSuccess]);
-snapshot({name: "Name"}, [onSuccess]);
-restore({image_id: 1}, [onSuccess]);
-rebuild({image_id: 1}, [onSuccess]);
-enable_backups([onSuccess]);
-disable_backups([onSuccess]);
-rename({name: "New name"}, [onSuccess]);
-destroy([onSuccess]);
-```
-
 Complete API documentation can be found at [https://api.digitalocean.com/](https://api.digitalocean.com/)
+
+### Droplets ``/droplets``
+ - ``Api.droplets.all(onSuccess)`` - get all active droplets
+ - ``Api.droplets.get(id, onSuccess)`` - get droplet by id
+ - ``Api.droplets.new({name: "Name", size_id: 1, image_id: 1, region_id: 1, ssh_key_ids: [1, 2]}, onSuccess)`` - create new droplet
+
+#### Droplet object
+##### Properties
+ - ``Droplet.id``
+ - ``Droplet.backups_active``
+ - ``Droplet.image_id``
+ - ``Droplet.name``
+ - ``Droplet.region_id``
+ - ``Droplet.size_id``
+ - ``Droplet.status``
+
+##### Methods
+ - ``Droplet.reboot(onSuccess)``
+ - ``Droplet.power_cycle(onSuccess)``
+ - ``Droplet.shutdown(onSuccess)``
+ - ``Droplet.power_off(onSuccess)``
+ - ``Droplet.power_on(onSuccess)``
+ - ``Droplet.password_reset(onSuccess)``
+ - ``Droplet.resize({size_id: 1}, onSuccess)``
+ - ``Droplet.snapshot({name: "Name"}, onSuccess)``
+ - ``Droplet.restore({image_id: 1}, onSuccess)``
+ - ``Droplet.rebuild({image_id: 1}, onSuccess)``
+ - ``Droplet.enable_backups(onSuccess)``
+ - ``Droplet.disable_backups(onSuccess)``
+ - ``Droplet.rename({name: "New name"}, onSuccess)``
+ - ``Droplet.destroy(onSuccess)``
+
+
+### Images ``/images``
+ - ``Api.images.all(onSuccess)`` - get all available images (global and my own)
+ - ``Api.images.global(onSuccess)`` - get all available global images
+ - ``Api.images.my(onSuccess)`` - get all my own images
+ - ``Api.images.get(id, onSuccess)`` - get image by id
+
+#### Image object
+##### Properties
+ - ``Image.id``
+ - ``Image.name``
+ - ``Image.distribution``
+
+##### Methods
+ - ``Image.transfer({region_id: 1}, onSuccess)``
+ - ``Image.destroy(onSuccess)``
+
+
+### SSH Keys ``/ssh_keys``
+ - ``Api.ssh_keys.all(onSuccess)`` - get *short* info about my SSH keys
+ - ``Api.ssh_keys.get(id, onSuccess)`` - get *full* info about specified SSH key
+ - ``Api.ssh_keys.new({name: "My new key", ssh_pub_key: "ssh-rsa ... user@host"}, onSuccess)`` - register new SSH key
+
+#### SshKey object
+##### Properties
+ - ``SshKey.id``
+ - ``SshKey.name``
+ - ``SshKey.ssh_pub_key`` - *available only in full info*
+
+##### Methods
+ - ``SshKey.edit({ssh_pub_key: "ssh-rsa ... user@host"}, onSuccess)``
+ - ``SshKey.destroy(onSuccess)``
+
+
+### Sizes ``/sizes``
+ - ``Api.sizes.all(onSuccess)`` - get *short* info about all available instance types
+ - ``Api.sizes.get(id, onSuccess)`` - get *full* info about specified instance type
+
+#### Size object
+##### Properties
+ - ``Size.id``
+ - ``Size.name``
+ - ``Size.slug``
+ - ``Size.cpu`` - number of CPUs, *available only in full info*
+ - ``Size.memory`` - memory amount (in Mb), *available only in full info*
+ - ``Size.cost_per_hour`` - price per hour (in dollars), *available only in full info*
+ - ``Size.disk`` - disk space (in Gb), *available only in full info*
+
+### Regions ``/regions``
+ - ``Api.regions.all(onSuccess)`` - get all available regions
+ - ``Api.regions.get(id, onSuccess)`` - get region by id
+
+#### Region object
+##### Properties
+ - ``Region.id``
+ - ``Region.name``
+ - ``Region.slug``
+
+
+### Domains ``/domains``
+ - ``Api.domains.all(onSuccess)`` - get all domains
+ - ``Api.domains.get(id, onSuccess)`` - get domain by id
+ - ``Api.domains.new({name: 'example.com', ip_address: '8.8.8.8'}, onSuccess)`` - create new domain
+
+#### Domain object
+##### Properties
+ - ``Domain.id``
+ - ``Domain.name``
+ - ``Domain.ttl``
+ - ``Domain.live_zone_file``
+ - ``Domain.error``
+ - ``Domain.zomne_file_with_error``
+
+##### Methods
+ - ``Domain.destroy(onSuccess)``
+
+
+### Domain Records ``/domains/[id]/records``
+**not supported yet**
+
 
 ## Error handling
 By default all error will asynchronously throw an error. To catch them
