@@ -50,8 +50,9 @@ api.ssh_keys.new(
  - ``api.droplets.all([onSuccess])``
  - ``api.droplets.get(id, [onSuccess])``
  - ``api.droplets.new({new droplet fields}, [onSuccess])``
-#### Droplet object
-##### Properties
+
+### Droplet object
+Properties
 ```javascript
 {
 	id: 100823,
@@ -63,7 +64,8 @@ api.ssh_keys.new(
 	status: "active",
 }
 ```
-##### Methods
+
+Methods
 ```javascript
 reboot([onSuccess]);
 power_cycle([onSuccess]);
@@ -86,6 +88,7 @@ Complete API documentation can be found at [https://www.digitalocean.com/api_acc
 ## Error handling
 By default all error will asynchronously throw an error. To catch them
 you need to handle ``'error'`` event:
+
 ```javascript
 api.images.get(12345, function() {
 	/* ... */
