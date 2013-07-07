@@ -1,6 +1,6 @@
 {
 	"name": "digitalocean",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "DigitalOcean API",
 	"keywords": ["digitalocean"],
 	"homepage": "https://github.com/avz/node-digitalocean",
