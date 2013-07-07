@@ -88,7 +88,7 @@ rename({name: "New name"}, [onSuccess]);
 destroy([onSuccess]);
 ```
 
-Complete API documentation can be found at [https://www.digitalocean.com/api_access](https://www.digitalocean.com/api_access)
+Complete API documentation can be found at [https://api.digitalocean.com/](https://api.digitalocean.com/)
 
 ## Error handling
 By default all error will asynchronously throw an error. To catch them
