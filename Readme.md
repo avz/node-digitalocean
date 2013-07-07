@@ -1,11 +1,16 @@
 # DigitalOcean API [![Build Status](https://secure.travis-ci.org/avz/node-digitalocean.png?branch=master)](http://travis-ci.org/avz/node-digitalocean)
+## Installation
+```
+npm install digitalocean
+```
+
+## Examples
 ```javascript
 var Api = require('digitalocean').Api;
 
 var api = new Api('CLIENT_ID', 'API_KEY');
 ```
 
-## Examples
 ```javascript
 /*
 This method returns all active droplets that are currently running in your account.
