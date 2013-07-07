@@ -1,0 +1,20 @@
+{
+	"name": "digitalocean",
+	"version": "0.1.0",
+	"description": "DigitalOcean API",
+	"keywords": ["digitalocean"],
+	"homepage": "https://github.com/avz/node-digitalocean",
+	"license": "BSD",
+	"author": "Artem Zaytsev <arepo@nologin.ru>",
+
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/avz/node-digitalocean.git"
+	},
+
+	"main": "./index.js",
+
+	"scripts": {
+		"test": "sh ./tests/all.sh"
+	}
+}
