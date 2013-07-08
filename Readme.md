@@ -156,13 +156,10 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``Domain.live_zone_file``
  - ``Domain.error``
  - ``Domain.zone_file_with_error``
+ - ``Domain.records`` - see "Domain Records" section
 
 ##### Methods
  - ``Domain.destroy(onSuccess)``
- - ``Domain.records.all(onSuccess)`` - see "Domain Records" section
- - ``Domain.records.get(onSuccess)`` - see "Domain Records" section
- - ``Domain.records.new(onSuccess)`` - see "Domain Records" section
-
 
 ### Domain Records ``/domains/[id]/records``
  - ``Domain.records.all(onSuccess)``
