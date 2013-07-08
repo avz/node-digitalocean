@@ -56,7 +56,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
 ### Droplets ``/droplets``
  - ``Api.droplets.all(onSuccess)`` - get all active droplets
  - ``Api.droplets.get(id, onSuccess)`` - get droplet by id
- - ``Api.droplets.new({name: "Name", size_id: 1, image_id: 1, region_id: 1, ssh_key_ids: [1, 2]}, onSuccess)`` - create new droplet
+ - ``Api.droplets.new({name: "Name", size_id: 1, image_id: 1, region_id: 1, ssh_key_ids: [1]}, onSuccess)`` - create new droplet
 
 #### Droplet object
 ##### Properties
@@ -155,7 +155,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``Domain.ttl``
  - ``Domain.live_zone_file``
  - ``Domain.error``
- - ``Domain.zomne_file_with_error``
+ - ``Domain.zone_file_with_error``
 
 ##### Methods
  - ``Domain.destroy(onSuccess)``
