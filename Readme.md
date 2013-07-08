@@ -159,10 +159,31 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
 
 ##### Methods
  - ``Domain.destroy(onSuccess)``
+ - ``Domain.records.all(onSuccess)`` - see "Domain Records" section
+ - ``Domain.records.get(onSuccess)`` - see "Domain Records" section
+ - ``Domain.records.new(onSuccess)`` - see "Domain Records" section
 
 
 ### Domain Records ``/domains/[id]/records``
-**not supported yet**
+ - ``Domain.records.all(onSuccess)``
+ - ``Domain.records.get(id, onSuccess)``
+ - ``Domain.records.new({domain_id: 1, data: '@', record_type: 'A', name: 'ya.ru'}, onSuccess)``
+
+#### DomainRecord object
+##### Properties
+ - ``DomainRecord.id``
+ - ``DomainRecord.domain_id``
+ - ``DomainRecord.record_type``
+ - ``DomainRecord.name``
+ - ``DomainRecord.data``
+ - ``DomainRecord.priority``
+ - ``DomainRecord.port``
+ - ``DomainRecord.weight``
+
+##### Methods
+ - ``DomainRecord.edit({}, onSuccess)``
+ - ``DomainRecord.destroy(onSuccess)``
+
 
 
 ## Error handling
