@@ -4,39 +4,6 @@ var EventEmitter = require('events').EventEmitter;
 var assert = require('assert');
 var HttpMock = require('./lib/HttpMock.js').HttpMock;
 
-//var httpMock = {
-//};
-//
-//httpMock.get = function(url, onRequest) {
-//	var uf = common.urlFingerprint(url);
-//	var response;
-//	var status;
-//
-//	switch(uf) {
-//		case common.urlFingerprint('https://api.digitalocean.com/domains/12/records/10/destroy?client_id=CLIENTID&api_key=APIKEY'):
-//			response = {
-//				status: 'ERROR',
-//				message: 'Not Found'
-//			};
-//		break;
-//		default:
-//			throw new Error('Unexpected request to URL: ' + url);
-//	}
-//
-//	process.nextTick(function() {
-//		var res = new EventEmitter;
-//		res.headers = {
-//			status: status
-//		};
-//		onRequest(res);
-//
-//		res.emit('data', new Buffer(JSON.stringify(response)));
-//		res.emit('end');
-//	});
-//
-//	return new EventEmitter;
-//};
-
 var api = new Api('CLIENTID', 'APIKEY');
 var httpMock = new HttpMock();
 api.lowLevelApi.httpClient = httpMock;
