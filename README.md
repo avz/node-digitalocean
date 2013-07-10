@@ -36,6 +36,14 @@ api.droplets.get(12345, function(droplet) {
 });
 
 /*
+Another way to remove droplet
+REST equivalent: GET /droplets/12345/destroy
+*/
+api.droplets.destroy(12345, function() {
+	// destroyed
+});
+
+/*
 This method allows you to add a new public SSH key to your account.
 REST equivalent: GET /ssh_keys/new
 */
