@@ -1,48 +1,30 @@
 var LowLevelApi = require('../lib/LowLevelApi.js').LowLevelApi;
-var common = require('./lib/common.js');
+var HttpMock = require('./lib/HttpMock.js').HttpMock;
 
-var tests = [
-	{
-		rel: '/',
-		resultUrl: 'http://localhost/?client_id=CLIENTID&api_key=APIKEY'
-	},
-	{
-		rel: '/hello/',
-		resultUrl: 'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY'
-	},
-	{
-		rel: '/hello/',
-		params: {a: 'b', b: 'c'},
-		resultUrl: 'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY&a=b&b=c'
-	},
-	{
-		rel: '/hello/',
-		params: {array: [1, 2, 3, 4]},
-		resultUrl: 'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY&array=1%2C2%2C3%2C4'
-	}
-];
-
-var httpMock = {
-	lastUrl: undefined
-};
-
-httpMock.get = function(url) {
-	this.lastUrl = url;
-
-	return {on: function() {}};
-};
-
+var httpMock = new HttpMock;
 var api = new LowLevelApi(httpMock, 'http://localhost/', 'CLIENTID', 'APIKEY');
 
-for(var i = 0; i < tests.length; i++) {
-	var test = tests[i];
+httpMock.wrap({
+	'http://localhost/?client_id=CLIENTID&api_key=APIKEY': ''
+}, function() {
+	api.request('/', {}, function() {});
+});
 
-	httpMock.lastUrl = undefined;
+httpMock.wrap({
+	'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY': ''
+}, function() {
+	api.request('/hello/', {}, function() {});
+});
 
-	api.request(test.rel, test.params ? test.params : {}, function() {});
+httpMock.wrap({
+	'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY&a=b&b=c': ''
+}, function() {
+	api.request('/hello/', {a: 'b', b: 'c'}, function() {});
+});
 
-	if(!common.urlsIsEqual(httpMock.lastUrl, test.resultUrl)) {
-		console.error('Failed test:', test, httpMock.lastUrl);
-		process.exit(1);
-	}
-}
+httpMock.wrap({
+	'http://localhost/hello/?client_id=CLIENTID&api_key=APIKEY&array=1%2C2%2C3%2C4': ''
+}, function() {
+	api.request('/hello/', {array: [1, 2, 3, 4]}, function() {});
+});
+
