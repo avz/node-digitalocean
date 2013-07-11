@@ -11,51 +11,47 @@ var Api = require('digitalocean').Api;
 var api = new Api('CLIENT_ID', 'API_KEY');
 ```
 
+### Create a new ``droplet``
+REST: ``GET /droplets/new``
+
 ```javascript
-/*
-This method returns all active droplets that are currently running in your account.
-REST equivalent: GET /droplets
-*/
-api.droplets.all(function(list) {
-	// get all droplets
-	console.log(list);
+api.droplets.new({
+	name: "Droplet name",
+	size_id: 1,
+	image_id: 123,
+	region_id: 1,
+	ssh_key_ids: [1212, 343]
+}, function(newDroplet) {
+	console.log('Created droplet:', newDroplet);
 });
+```
 
-/*
-This method returns full information for a specific droplet ID
-REST equivalent: GET /droplets/12345
-*/
-api.droplets.get(12345, function(droplet) {
-	// get droplet #12345
-	console.log(droplet);
+### Get ``droplet`` by id
+REST: ``GET /droplets/121233``
 
-	/* REST equivalent: GET /droplets/12345/destroy */
-	droplet.destroy(function() {
-		// destroyed
-	});
+```javascript
+var dropletId = 121233;
+
+api.droplets.get(dropletId, function(droplet) {
+	console.log('Droplet #' + dropletId, droplet);
 });
+```
 
-/*
-Another way to remove droplet
-REST equivalent: GET /droplets/12345/destroy
-*/
-api.droplets.destroy(12345, function() {
-	// destroyed
+### Reboot a ``droplet``
+REST: ``GET /droplets/121233/reboot``
+
+```javascript
+var dropletId = 121233;
+
+api.droplets.reboot(dropletId);
+```
+or another way
+```javascript
+var dropletId = 121233;
+
+api.droplets.get(dropletId, function(droplet) {
+	droplet.reboot();
 });
-
-/*
-This method allows you to add a new public SSH key to your account.
-REST equivalent: GET /ssh_keys/new
-*/
-api.ssh_keys.new(
-	{
-		name: "New SSH key"
-		ssh_pub_key: "ssh-rsa ..................... user@host"
-	},
-	function(newSshKey) {
-		console.log(newSshKey);
-	}
-);
 ```
 
 ## API
