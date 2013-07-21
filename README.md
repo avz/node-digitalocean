@@ -57,7 +57,7 @@ api.droplets.get(dropletId, function(droplet) {
 ## API
 Complete API documentation can be found at [https://api.digitalocean.com/](https://api.digitalocean.com/)
 
-### Droplets ``/droplets``
+### Droplets (``/droplets``)
  - ``Api.droplets.all(onSuccess)`` - get all active droplets
  - ``Api.droplets.get(id, onSuccess)`` - get droplet by id
  - ``Api.droplets.new({name: "Name", size_id: 1, image_id: 1, region_id: 1, ssh_key_ids: [1]}, onSuccess)`` - create new droplet
@@ -89,7 +89,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``Droplet.destroy(onSuccess)``
 
 
-### Images ``/images``
+### Images (``/images``)
  - ``Api.images.all(onSuccess)`` - get all available images (global and my own)
  - ``Api.images.global(onSuccess)`` - get all available global images
  - ``Api.images.my(onSuccess)`` - get all my own images
@@ -106,7 +106,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``Image.destroy(onSuccess)``
 
 
-### SSH Keys ``/ssh_keys``
+### SSH Keys (``/ssh_keys``)
  - ``Api.ssh_keys.all(onSuccess)`` - get *short* info about my SSH keys
  - ``Api.ssh_keys.get(id, onSuccess)`` - get *full* info about specified SSH key
  - ``Api.ssh_keys.new({name: "My new key", ssh_pub_key: "ssh-rsa ... user@host"}, onSuccess)`` - register new SSH key
@@ -122,7 +122,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``SshKey.destroy(onSuccess)``
 
 
-### Sizes ``/sizes``
+### Sizes (``/sizes``)
  - ``Api.sizes.all(onSuccess)`` - get *short* info about all available instance types
  - ``Api.sizes.get(id, onSuccess)`` - get *full* info about specified instance type
 
@@ -136,7 +136,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``Size.cost_per_hour`` - price per hour (in dollars), *available only in full info*
  - ``Size.disk`` - disk space (in Gb), *available only in full info*
 
-### Regions ``/regions``
+### Regions (``/regions``)
  - ``Api.regions.all(onSuccess)`` - get all available regions
  - ``Api.regions.get(id, onSuccess)`` - get region by id
 
@@ -147,7 +147,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``Region.slug``
 
 
-### Domains ``/domains``
+### Domains (``/domains``)
  - ``Api.domains.all(onSuccess)`` - get all domains
  - ``Api.domains.get(id, onSuccess)`` - get domain by id
  - ``Api.domains.new({name: 'example.com', ip_address: '8.8.8.8'}, onSuccess)`` - create new domain
@@ -165,7 +165,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
 ##### Methods
  - ``Domain.destroy(onSuccess)``
 
-### Domain Records ``/domains/[id]/records``
+### Domain Records (``/domains/[domain_id]/records``)
  - ``Domain.records.all(onSuccess)``
  - ``Domain.records.get(id, onSuccess)``
  - ``Domain.records.new({domain_id: 1, data: '@', record_type: 'A', name: 'ya.ru'}, onSuccess)``
