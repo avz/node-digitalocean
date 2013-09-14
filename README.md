@@ -168,7 +168,7 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
 ### Domain Records (``/domains/[domain_id]/records``)
  - ``Domain.records.all(onSuccess)``
  - ``Domain.records.get(id, onSuccess)``
- - ``Domain.records.new({domain_id: 1, data: '@', record_type: 'A', name: 'ya.ru'}, onSuccess)``
+ - ``Domain.records.new({domain_id: 1, data: '@', record_type: 'A', name: '8.8.8.8'}, onSuccess)``
 
 #### DomainRecord object
 ##### Properties
@@ -185,6 +185,17 @@ Complete API documentation can be found at [https://api.digitalocean.com/](https
  - ``DomainRecord.edit({}, onSuccess)``
  - ``DomainRecord.destroy(onSuccess)``
 
+
+### Events (``/events``)
+ - ``Api.events.get(id, onSuccess)``
+
+#### Event object
+##### Properties
+ - ``Event.id``
+ - ``Event.action_status``
+ - ``Event.droplet_id``
+ - ``Event.event_type_id``
+ - ``Event.percentage``
 
 
 ## Error handling
